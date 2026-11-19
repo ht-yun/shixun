@@ -1,0 +1,9 @@
+/* Keep the HTML hidden attribute authoritative even though portal.css is minified. */
+.modal-backdrop[hidden] {
+  display: none !important;
+}
+
+.role-switch[hidden],
+.role-switch button[hidden] {
+  display: none !important;
+}

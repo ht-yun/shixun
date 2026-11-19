@@ -1,0 +1,34 @@
+[Unit]
+Description=CloudLab web platform
+After=network-online.target docker.service
+Wants=network-online.target
+Requires=docker.service
+
+[Service]
+Type=simple
+User=cloudlab
+Group=cloudlab
+WorkingDirectory=/opt/cloudlab/current
+Environment=NODE_ENV=production
+Environment=PORT=8080
+Environment=HOST=0.0.0.0
+Environment=CLOUDLAB_DATA_FILE=/opt/cloudlab/data/platform.json
+Environment=CLOUDLAB_AUTH_FILE=/opt/cloudlab/data/accounts.json
+Environment=CLOUDLAB_UPLOADS_DIR=/opt/cloudlab/data/uploads
+Environment=CLOUDLAB_AUTH_REQUIRED=true
+Environment=CLOUDLAB_GIT_ROOT=/opt/cloudlab/data/repositories
+Environment=CLOUDLAB_TERMINAL_ENABLED=true
+Environment=CLOUDLAB_TERMINAL_IMAGE=cloudlab-terminal:1
+Environment=CLOUDLAB_TERMINAL_MAX_SESSIONS=10
+Environment=CLOUDLAB_TERMINAL_MAX_PER_IP=0
+Environment=CLOUDLAB_TERMINAL_IDLE_MINUTES=10
+Environment=CLOUDLAB_TERMINAL_MAX_MINUTES=120
+ExecStart=/usr/bin/node /opt/cloudlab/current/local-server.js
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=30
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

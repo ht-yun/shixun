@@ -1,0 +1,24 @@
+services:
+  gitea:
+    image: ${GITEA_IMAGE:-docker.gitea.com/gitea:1-rootless}
+    container_name: cloudlab-gitea
+    restart: unless-stopped
+    environment:
+      GITEA__database__DB_TYPE: sqlite3
+      GITEA__server__DOMAIN: ${GITEA_DOMAIN:-101.42.14.129}
+      GITEA__server__ROOT_URL: ${GITEA_ROOT_URL:-http://101.42.14.129/git/}
+      GITEA__server__LOCAL_ROOT_URL: http://gitea:3000/
+      GITEA__server__HTTP_PORT: 3000
+      GITEA__server__START_SSH_SERVER: "true"
+      GITEA__server__SSH_PORT: 2222
+      GITEA__service__DISABLE_REGISTRATION: "true"
+      GITEA__repository__DEFAULT_PRIVATE: private
+      GITEA__security__INSTALL_LOCK: ${GITEA_INSTALL_LOCK:-false}
+    volumes:
+      - /opt/cloudlab/gitea/data:/var/lib/gitea
+      - /opt/cloudlab/gitea/config:/etc/gitea
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "127.0.0.1:3001:3000"
+      - "127.0.0.1:2223:2222"

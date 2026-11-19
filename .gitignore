@@ -1,0 +1,36 @@
+# Dependencies and build output
+node_modules/
+.npm-cache/
+.m2/
+backend/target/
+__pycache__/
+*.py[cod]
+
+# Runtime data, sessions and uploads
+local-data.json
+server-local-data*.json
+cloudlab-auth.json
+uploads/
+*.log
+*.err.log
+
+# Local previews, test workspaces and release artifacts
+release/
+tmp/
+tmp-*/
+qa-screenshots/
+*.zip
+
+# Delivery material and machine-specific information
+交付资料/
+docs/
+CloudLab与头歌课程创建学习差距对比.md
+头歌教师课堂功能分析.md
+项目借鉴的开源项目与功能.md
+deploy/jumpserver_*.py
+
+# IDE and operating-system files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#102337" />
+    <title>学生实践平台 · 教师工作台</title>
+    <link rel="stylesheet" href="portal.css" />
+    <link rel="stylesheet" href="student-ui.css" />
+    <link rel="stylesheet" href="student-runtime.css?v=20261108-5" />
+    <link rel="stylesheet" href="modal-fix.css?v=20261108-5" />
+    <link rel="stylesheet" href="teacher-runtime.css?v=20261119-1" />
+    <link rel="stylesheet" href="admin-runtime.css" />
+    <link rel="stylesheet" href="feature-upgrade.css" />
+    <link rel="stylesheet" href="mobile-responsive.css?v=20261113-1" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="portal.html"><span class="brand-mark">▣</span><span>学生实践平台</span></a>
+      <div class="role-switch" id="roleSwitch" aria-label="当前工作台" hidden>
+        <button data-role="teacher" class="active">教师工作台</button>
+        <button data-role="student">学生工作台</button>
+        <button data-role="admin">管理控制台</button>
+      </div>
+      <button class="identity" id="identityMenu" type="button" title="退出登录"><span class="avatar" id="identityAvatar">教</span><span id="identityText">教师</span><span class="chevron">⌄</span></button>
+    </header>
+
+    <div class="portal-shell">
+      <aside class="sidebar">
+        <div class="side-label" id="sideLabel">教师管理</div>
+        <nav id="sidebarNav"></nav>
+        <div class="side-bottom" id="platformStatus"><span class="status-dot"></span>正在检查平台服务</div>
+      </aside>
+      <main id="mainView" class="main-view"><section class="portal-loading"><span></span><strong>正在加载工作台</strong><small>正在确认账号身份并读取课程数据…</small></section></main>
+    </div>
+
+    <div class="modal-backdrop" id="modalBackdrop" hidden>
+      <section class="modal" id="modalPanel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-head"><h2 id="modalTitle">新建课程</h2><button class="icon-button" type="button" data-action="close-modal" aria-label="关闭">×</button></div>
+        <form id="modalForm"></form>
+      </section>
+    </div>
+    <div class="toast" id="toast" role="status"></div>
+    <div class="auth-screen" id="authScreen" hidden>
+      <form class="auth-card" id="authForm">
+        <span class="brand-mark">▣</span><h1 id="authTitle">登录学生实践平台</h1><p id="authHint">登录后将根据账号身份进入对应工作台。</p>
+        <label>用户名<input name="username" required maxlength="80" autocomplete="username" /></label>
+        <label>密码<input name="password" required minlength="8" type="password" autocomplete="current-password" /></label>
+        <button class="primary" type="submit" id="authSubmit">登录</button><small id="authError"></small>
+      </form>
+    </div>
+    <script src="portal.js?v=20261119-1"></script>
+  </body>
+</html>

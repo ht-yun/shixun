@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#07141e" />
+    <title>学生实践平台 · Linux 文件权限实践</title>
+    <link rel="stylesheet" href="vendor/xterm.css" />
+    <link rel="stylesheet" href="styles.css?v=20261117-1" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="learn-panel" id="learnPanel">
+        <header class="learn-header">
+          <a class="back-button" id="backToCourse" href="portal.html?role=student&amp;page=learning" aria-label="返回上一级页面" title="返回课程学习">
+            <span aria-hidden="true">←</span>
+            <small>返回</small>
+          </a>
+          <div class="chapter-title">
+            <span class="eyebrow" id="labEyebrow">实验任务 · 第 1 关</span>
+            <h1 id="labTitle">Linux 文件权限实践</h1>
+          </div>
+          <div class="score-pill" id="scorePill" title="当前实验得分">--</div>
+          <button class="icon-button" id="focusButton" aria-label="切换右侧实验区全屏">↗</button>
+        </header>
+
+        <nav class="content-tabs" aria-label="学习内容导航">
+          <button class="content-tab active" data-content-tab="learn">学习内容</button>
+          <button class="content-tab" data-content-tab="answer">参考答案</button>
+          <button class="content-tab" data-content-tab="history">记录</button>
+          <button class="content-tab" data-content-tab="comments">评论</button>
+        </nav>
+
+        <div class="learn-body" id="learnBody">
+          <div class="content-view active" data-content-view="learn">
+            <div class="outline-card">
+              <div class="outline-item selected">任务描述</div>
+              <div class="outline-item">相关知识</div>
+              <div class="outline-item nested">文件创建与查看</div>
+              <div class="outline-item nested">Linux 权限设置</div>
+              <div class="outline-item">编程要求</div>
+              <div class="outline-item">测试说明</div>
+            </div>
+
+            <article class="lesson-copy">
+              <div class="section-kicker" id="labTaskKicker">Task 01 · 文件权限管理</div>
+              <h2>任务描述</h2>
+              <p id="labDescription">在右侧真实 Ubuntu 实验环境中创建 <code>notes.txt</code>，并将文件权限设置为仅所有者可读写。</p>
+
+              <h3>相关知识</h3>
+              <p id="labKnowledge">本关需要掌握 Linux 工作目录、文件创建、权限查看与 <code>chmod</code> 命令的基本使用。</p>
+
+              <div class="info-callout">
+                <strong>实验目标</strong>
+                <span id="labObjectives">让 <code>notes.txt</code> 位于实验工作目录中，并通过平台测试集验证其权限为 <code>600</code>。</span>
+              </div>
+
+              <h3>操作步骤</h3>
+              <p>右侧命令行已经连接到真实 Ubuntu 工作目录。依次执行下列命令，并使用“自动测试”查看结果。</p>
+              <pre class="code-hint"># 确认当前位置
+pwd
+
+# 创建文件并设置仅所有者可读写
+touch notes.txt
+chmod 600 notes.txt
+stat -c "%a %n" notes.txt</pre>
+
+              <h3>编程要求</h3>
+              <ol id="labRequirements">
+                <li>在实验工作目录中创建 <code>notes.txt</code>。</li>
+                <li>使用 <code>chmod</code> 将权限设置为 <code>600</code>。</li>
+                <li>使用测试按钮验证实验结果。</li>
+              </ol>
+
+              <h3>测试说明</h3>
+              <p id="labTestDescription">自动测试会真实检查文件是否存在及权限是否正确；评测失败不会清除当前环境。实验采用受限 Ubuntu 环境，并提供代码文件与命令行操作。</p>
+            </article>
+          </div>
+
+          <div class="content-view" data-content-view="answer">
+            <div class="empty-view">
+              <div class="empty-icon">◎</div>
+              <h2>参考答案</h2>
+              <p>遇到困难时可查看操作提示；正式评测仍会检查真实实验环境。</p>
+              <div id="referenceAnswerOptions"></div>
+              <button class="secondary-button" id="unlockAnswer">查看操作提示</button>
+              <pre class="code-hint" id="referenceAnswerContent" hidden></pre>
+            </div>
+          </div>
+
+          <div class="content-view" data-content-view="history">
+            <div class="history-list" id="historyList"><div class="empty-view"><h2>暂无学习记录</h2><p>执行命令或运行评测后，这里会显示真实操作记录。</p></div></div>
+          </div>
+
+          <div class="content-view" data-content-view="comments">
+            <div class="comment-list" id="commentList"><div class="empty-view"><h2>暂无评论</h2><p>提交后会同步到实验评论区。</p></div></div>
+          </div>
+        </div>
+
+        <footer class="comment-composer">
+          <input id="commentInput" type="text" placeholder="说点什么" aria-label="评论内容" />
+          <button class="like-button" id="likeButton" aria-label="点赞">♡</button>
+          <button class="send-comment" id="sendComment" aria-label="发送评论">➤</button>
+        </footer>
+      </section>
+
+      <div class="splitter" id="splitter" role="separator" aria-label="调整左右面板宽度" tabindex="0">‹</div>
+
+      <section class="lab-panel" id="labPanel">
+        <header class="lab-toolbar">
+          <div class="tool-tabs">
+            <button class="tool-tab active" data-tool-tab="files"><span class="tool-icon">⌘</span>代码文件</button>
+            <button class="tool-tab" data-tool-tab="terminal"><span class="tool-icon">›_</span>命令行</button>
+          </div>
+          <div class="toolbar-actions">
+            <span class="environment-status"><i></i><span id="environmentStatus">正在检查环境</span></span>
+            <button class="toolbar-button" id="refreshEnvironment" title="刷新实验环境">↻</button>
+            <button class="toolbar-button" id="resetEnvironment" title="重置环境">↶</button>
+            <button class="toolbar-button" id="settingsButton" title="实验设置">⚙</button>
+            <button class="toolbar-button" id="expandLab" title="实验区全屏">⛶</button>
+          </div>
+        </header>
+
+        <div class="lab-workspace">
+          <div class="workspace-view active" data-tool-view="files">
+            <aside class="file-tree">
+              <div class="tree-heading"><span>代码文件</span><button class="tree-action" id="newFileButton" title="新建文件">＋</button></div>
+              <div class="tree-root">▾ <span>workspace</span></div>
+              <div id="fileEntries"><span class="terminal-meta">连接终端后加载文件…</span></div>
+            </aside>
+            <div class="editor-area">
+              <div class="editor-tabs"><span class="editor-tab active" id="activeFile">尚未打开文件 <button type="button" title="当前没有可保存的修改" id="saveFileButton" disabled>等待连接</button></span></div>
+              <div class="editor-shell">
+                <div class="line-numbers" id="lineNumbers"></div>
+                <textarea id="codeEditor" spellcheck="false" aria-label="代码编辑器"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="workspace-view terminal-view" data-tool-view="terminal">
+            <div class="terminal-head"><span>终端 1</span><span class="terminal-meta" id="terminalMeta">bash · Docker 隔离环境 · 正在等待连接</span><span class="terminal-security">无网络 · 128 MiB · 30 分钟</span><button id="newTerminal" title="重建终端">↻</button></div>
+            <div class="xterm-host" id="terminalHost" aria-label="交互式 Linux 终端"></div>
+            <div class="terminal-connection" id="terminalConnection"><span class="terminal-connection-spinner"></span><strong>准备隔离终端</strong><small>首次进入时将创建独立 Linux 容器</small><button class="secondary-button" id="reconnectTerminal" hidden>重新连接</button></div>
+            <div class="terminal-fallback" id="terminalFallback" hidden>
+              <div class="terminal-output" id="terminalOutput"><div><span class="terminal-prompt">cloudlab@lab-node-01:~/workspace$</span> echo "欢迎使用学生实践平台"</div><div class="terminal-muted">交互终端暂不可用，已切换为受限命令模式。</div><div><span class="terminal-prompt">cloudlab@lab-node-01:~/workspace$</span> <span class="cursor"></span></div></div>
+              <div class="terminal-input-row"><span class="terminal-prompt">$</span><input id="terminalInput" autocomplete="off" placeholder="输入命令并按 Enter" /></div>
+            </div>
+          </div>
+
+        </div>
+
+        <section class="test-panel" id="testPanel">
+          <div class="test-resizer" id="testResizer" title="拖动调整测试结果高度"></div>
+          <div class="test-header"><div><span class="test-title">测试结果</span><span class="test-summary" id="testSummary">尚未运行测试</span></div><button id="toggleTestPanel" aria-label="展开或收起测试结果">⌃</button></div>
+          <div class="test-body" id="testBody">
+            <button class="test-case expanded" data-test="1"><span class="chevron">›</span><span>测试集 1 · 实验工作目录检查</span><strong class="waiting">待测试</strong></button>
+            <div class="test-detail" data-test-detail="1"><div><span>检查项</span><strong>Ubuntu 实验工作目录可访问</strong></div><div><span>实际结果</span><code>尚未测试</code></div></div>
+            <button class="test-case" data-test="2"><span class="chevron">›</span><span>测试集 2 · notes.txt 文件检查</span><strong class="waiting">待测试</strong></button>
+            <div class="test-detail" data-test-detail="2" hidden><div><span>预期结果</span><strong>文件存在</strong></div><div><span>实际结果</span><code>尚未测试</code></div></div>
+            <button class="test-case" data-test="3"><span class="chevron">›</span><span>测试集 3 · 文件权限检查（600）</span><strong class="waiting">待测试</strong></button>
+            <div class="test-detail" data-test-detail="3" hidden><div><span>预期结果</span><strong>600</strong></div><div><span>实际结果</span><code>尚未测试</code></div></div>
+          </div>
+        </section>
+
+        <footer class="lab-footer">
+          <span>本关最大执行时间：<strong id="labTimeLimit">120 秒</strong></span>
+          <span class="footer-state" id="footerState">正在检查实验环境</span>
+          <div class="footer-actions"><button class="secondary-button" id="prevButton">上一关</button><button class="secondary-button" id="nextButton">下一关</button><button class="secondary-button" id="autoTestButton">自动测评</button><button class="primary-button" id="evaluateButton"><span>▶</span>提交评测</button></div>
+        </footer>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" role="status"></div>
+  <script src="app.js?v=20261118-2"></script>
+  </body>
+</html>

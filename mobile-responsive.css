@@ -1,0 +1,618 @@
+/* CloudLab mobile adaptation layer.
+   Keep desktop rules intact and progressively collapse complex workbench views. */
+
+@media (max-width: 800px) {
+  :root {
+    --mobile-gutter: 14px;
+  }
+
+  html,
+  body {
+    min-width: 0;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  body {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  .topbar {
+    min-height: 60px;
+    height: auto;
+    padding: 10px var(--mobile-gutter);
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .brand {
+    font-size: 16px;
+  }
+
+  .brand-mark {
+    width: 28px;
+    height: 28px;
+    margin-right: 6px;
+    font-size: 17px;
+  }
+
+  .identity {
+    margin-left: auto;
+    min-height: 40px;
+    padding: 4px 0;
+  }
+
+  .role-switch {
+    order: 3;
+    width: 100%;
+    height: 40px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .role-switch::-webkit-scrollbar {
+    display: none;
+  }
+
+  .role-switch button {
+    flex: 0 0 auto;
+    min-height: 34px;
+    padding: 0 14px;
+    font-size: 13px;
+  }
+
+  .portal-shell {
+    min-height: calc(100vh - 60px);
+    flex-direction: column;
+  }
+
+  .sidebar {
+    position: sticky;
+    z-index: 10;
+    top: 0;
+    width: 100%;
+    min-height: 0;
+    padding: 8px var(--mobile-gutter);
+    box-shadow: 0 2px 10px rgba(16, 35, 55, .16);
+  }
+
+  .side-label,
+  .side-bottom {
+    display: none;
+  }
+
+  .sidebar nav {
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .sidebar nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-item {
+    width: auto;
+    min-height: 40px;
+    margin: 0;
+    padding: 9px 12px;
+    flex: 0 0 auto;
+    white-space: nowrap;
+    font-size: 13px;
+  }
+
+  .main-view {
+    width: 100%;
+    max-width: none;
+    padding: 20px var(--mobile-gutter) 36px;
+  }
+
+  .view-head {
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+  }
+
+  .view-head h1 {
+    font-size: 21px;
+  }
+
+  .view-head > :last-child,
+  .detail-actions,
+  .button-row {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .view-head > :last-child > button,
+  .detail-actions > button,
+  .button-row > button {
+    flex: 1 1 140px;
+    min-height: 40px;
+  }
+
+  .metrics,
+  .grade-summary,
+  .course-summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .metric {
+    min-height: 96px;
+    padding: 15px;
+  }
+
+  .metric-value {
+    margin-top: 8px;
+    font-size: 24px;
+  }
+
+  .grid,
+  .student-layout,
+  .student-dashboard-columns,
+  .admin-runtime-grid,
+  .admin-users-grid,
+  .admin-settings-grid,
+  .student-course-detail-hero,
+  .student-dashboard-hero {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .cards,
+  .student-course-grid,
+  .admin-resource-cards,
+  .policy-grid,
+  .check-grid,
+  .lab-preset-grid,
+  .knowledge-graph-card,
+  .module-tools-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .card-head {
+    min-height: 56px;
+    height: auto;
+    padding: 13px 16px;
+    gap: 10px;
+  }
+
+  .card-head h2 {
+    font-size: 15px;
+  }
+
+  .table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+  }
+
+  .table th,
+  .table td {
+    padding: 12px 14px;
+  }
+
+  .filter-row,
+  .toolbar,
+  .task-filter,
+  .hero-actions,
+  .resource-actions,
+  .workspace-toolbar,
+  .lecture-card > header,
+  .readiness-banner,
+  .section-title-row {
+    align-items: stretch;
+    flex-wrap: wrap;
+  }
+
+  .workspace-toolbar,
+  .lecture-card > header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .workspace-toolbar > div:last-child,
+  .lecture-card > header > :last-child,
+  .module-batch-actions,
+  .stage-actions {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .workspace-toolbar > div:last-child > button,
+  .module-batch-actions > button,
+  .stage-actions > button {
+    flex: 1 1 130px;
+    min-height: 38px;
+  }
+
+  .filter-row input,
+  .filter-row select,
+  .toolbar input,
+  .toolbar select {
+    width: 100%;
+    min-height: 40px;
+  }
+
+  .settings-form {
+    padding: 16px;
+  }
+
+  .form-grid,
+  .question-judge-options,
+  .repository-file-picker,
+  .exam-lab-picker,
+  .config-row,
+  .evaluation-test-row,
+  .reference-answer-row,
+  .starter-file-row,
+  .resource-check-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .form-row.full,
+  .form-section {
+    grid-column: auto;
+  }
+
+  .modal {
+    width: calc(100vw - 20px);
+    max-height: calc(100vh - 20px);
+    padding: 0 16px 18px;
+    border-radius: 12px;
+  }
+
+  .modal.resource-viewer-modal {
+    width: calc(100vw - 20px);
+    height: calc(100vh - 20px);
+  }
+
+  .form-actions {
+    flex-wrap: wrap;
+  }
+
+  .form-actions > button {
+    flex: 1 1 140px;
+    min-height: 42px;
+  }
+
+  .course-banner,
+  .learning-hero,
+  .student-dashboard-hero {
+    padding: 22px 18px;
+  }
+
+  .learning-hero h2,
+  .student-dashboard-hero h2,
+  .student-course-detail-hero h2 {
+    font-size: 23px;
+  }
+
+  .course-banner {
+    display: block;
+  }
+
+  .course-banner-meta {
+    width: auto;
+    margin-top: 18px;
+  }
+
+  .dashboard-progress {
+    justify-content: space-between;
+    gap: 14px;
+    padding: 16px;
+  }
+
+  .progress-ring {
+    width: 86px;
+    height: 86px;
+    flex-basis: 86px;
+  }
+
+  .student-data-grid,
+  .student-shortcuts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .student-data-grid article {
+    padding: 14px;
+  }
+
+  .student-shortcuts button {
+    grid-template-columns: 34px minmax(0, 1fr) auto;
+    padding: 12px;
+  }
+
+  .data-icon {
+    width: 38px;
+    height: 38px;
+    flex-basis: 38px;
+  }
+
+  .current-learning-task,
+  .practice-card {
+    grid-template-columns: 42px minmax(0, 1fr);
+    gap: 12px;
+    padding: 17px 15px;
+  }
+
+  .current-learning-task > :last-child,
+  .practice-action {
+    grid-column: 2;
+    align-items: flex-start;
+    min-width: 0;
+  }
+
+  .practice-title {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .practice-title h2 {
+    font-size: 16px;
+  }
+
+  .grade-summary article {
+    padding: 15px;
+  }
+
+  .timeline-row {
+    grid-template-columns: 14px minmax(0, 1fr);
+    gap: 10px;
+  }
+
+  .timeline-row time {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .timeline-row > div:last-child {
+    grid-column: 2;
+  }
+
+  .student-course-detail-hero {
+    gap: 18px;
+    padding: 22px 18px;
+  }
+
+  .student-course-detail-hero aside {
+    justify-self: stretch;
+  }
+
+  .course-detail-tabs {
+    gap: 20px;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .course-detail-tabs input {
+    width: 180px;
+    flex: 0 0 180px;
+  }
+
+  .schedule-section > header {
+    grid-template-columns: 36px minmax(0, 1fr);
+    gap: 12px;
+    padding: 17px 16px;
+  }
+
+  .schedule-section header > strong {
+    grid-column: 2;
+    justify-self: start;
+  }
+
+  .schedule-items {
+    padding: 0 16px;
+  }
+
+  .schedule-items article {
+    grid-template-columns: 34px minmax(0, 1fr);
+    gap: 10px;
+    padding: 13px 0;
+  }
+
+  .schedule-meta,
+  .schedule-items article > .secondary {
+    grid-column: 2;
+    justify-self: start;
+  }
+
+  .student-stage-heading {
+    padding: 13px 16px 9px;
+  }
+
+  .course-notice-strip {
+    grid-template-columns: auto 1fr;
+  }
+
+  .course-notice-strip p,
+  .course-notice-strip time,
+  .course-notice-strip > .secondary {
+    grid-column: 2;
+  }
+
+  .course-notice-strip p {
+    white-space: normal;
+  }
+
+  .stage-item {
+    grid-template-columns: 32px minmax(0, 1fr);
+    gap: 10px;
+  }
+
+  .stage-item > :last-child {
+    grid-column: 2;
+    justify-self: start;
+  }
+
+  .question-options-title {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .question-option-row {
+    grid-template-columns: 38px minmax(0, 1fr) 30px;
+    gap: 7px;
+  }
+
+  .question-answer-choice {
+    width: 38px;
+    height: 38px;
+  }
+
+  .question-option-text {
+    min-width: 0;
+  }
+
+  .lab-step-nav {
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+
+  .lab-step-nav button {
+    flex: 0 0 auto;
+  }
+
+  .workspace-summary-grid .metrics {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 14px;
+  }
+
+  .knowledge-card,
+  .module-tool-card {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .knowledge-card > div:last-child {
+    justify-content: flex-start;
+  }
+
+  .module-tool-card > strong {
+    text-align: left;
+  }
+
+  .repository-history article {
+    grid-template-columns: 1fr;
+    gap: 5px;
+  }
+
+  .repository-diff,
+  pre,
+  code {
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-wrap: normal;
+  }
+
+  .resource-viewer-summary,
+  .resource-viewer-actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .resource-viewer-actions > div {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .resource-viewer-actions > div > button,
+  .resource-viewer-actions > div > a {
+    flex: 1 1 140px;
+    min-height: 40px;
+  }
+}
+
+@media (max-width: 560px) {
+  .metrics,
+  .grade-summary,
+  .course-summary,
+  .student-data-grid,
+  .student-shortcuts {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .main-view {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  .topbar {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  .student-shortcuts button {
+    grid-template-columns: 39px minmax(0, 1fr) auto;
+  }
+
+  .task-body {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 18px 16px;
+  }
+
+  .task-number {
+    width: 40px;
+    height: 40px;
+  }
+
+  .hero-actions > button,
+  .hero-actions > .text-action {
+    width: 100%;
+    min-height: 40px;
+  }
+
+  .toast {
+    right: 12px;
+    bottom: 16px;
+    left: 12px;
+    width: auto;
+    transform: translateY(18px);
+    text-align: center;
+  }
+
+  .toast.show {
+    transform: translateY(0);
+  }
+
+  .modal-head {
+    min-height: 58px;
+  }
+
+  .modal-head h2 {
+    font-size: 16px;
+  }
+
+  .empty,
+  .empty-state,
+  .course-detail-empty,
+  .resource-no-frame {
+    padding: 42px 18px;
+  }
+
+  .student-course-detail-hero aside strong {
+    font-size: 28px;
+  }
+
+  .student-stage-content-copy {
+    padding-right: 13px;
+    padding-left: 13px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
